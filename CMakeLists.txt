@@ -370,3 +370,15 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 endif()
 
 add_subdirectory(src)
+
+## Install
+
+include(GNUInstallDirs)
+
+install(FILES ${PROJECT_BINARY_DIR}/include/jemalloc/jemalloc.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/jemalloc)
+if(JEMALLOC_BUILD_SHARED)
+    install(TARGETS ${PROJECT_NAME}-shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif()
+if(JEMALLOC_BUILD_STATIC)
+    install(TARGETS ${PROJECT_NAME}-static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif()
