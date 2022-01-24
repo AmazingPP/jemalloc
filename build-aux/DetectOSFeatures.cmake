@@ -120,11 +120,11 @@ if(NOT LG_VADDR)
         set(LG_VADDR 48)
     elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
         GetSystemAddrBits(LG_VADDR)
-        # Cache result so we don't run the check every time
-        set(LG_VADDR ${LG_VADDR} CACHE INTERNAL "System Address Bits")
     else()
         message(FATAL_ERROR "Unknown number of VADDR bits")
     endif()
+    # Cache result so we don't run the check every time
+    set(LG_VADDR ${LG_VADDR} CACHE INTERNAL "System Address Bits")
 endif()
 
 if((NOT LG_PAGE) OR (NOT LG_CACHELINE))
